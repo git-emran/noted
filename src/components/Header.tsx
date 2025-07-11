@@ -1,6 +1,8 @@
 import { shadow } from "@/styles/utils";
 import Image from "next/image";
 import Link from "next/link";
+import { Button } from "./ui/button";
+import { DarkModeToggle } from "./DarkModeToggle";
 
 function Header() {
   const user = null;
@@ -19,10 +21,19 @@ function Header() {
         </h1>
       </Link>
       <div className="flex gap-4">
-        {user ? ("logout"): (
-            <>
-            </>
+        {user ? (
+          "Sign out"
+        ) : (
+          <>
+            <Button asChild className="hidden sm:block">
+              <Link href="/signIn">Sign up</Link>
+            </Button>
+            <Button asChild variant="outline">
+              <Link href="/signIn">Login</Link>
+            </Button>
+          </>
         )}
+        <DarkModeToggle />
       </div>
     </header>
   );
